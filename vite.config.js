@@ -7,6 +7,11 @@ export default defineConfig({
     port: 3000,
     open: false,
     host: true,
-    allowedHosts: 'all'
+    allowedHosts: [
+      'localhost',
+      '127.0.0.1',
+      '.csb.app',
+      'fsndrh-3000.csb.app'
+    ]
   }
 })
