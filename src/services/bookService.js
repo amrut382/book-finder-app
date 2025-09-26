@@ -1,4 +1,5 @@
 const OPEN_LIBRARY_BASE_URL = 'https://openlibrary.org'
+const CORS_PROXY = 'https://api.allorigins.win/raw?url='
 
 /**
  * Search for books using the Open Library Search API
@@ -60,7 +61,16 @@ export const searchBooks = async (query, searchType = 'title', sortBy = 'relevan
     
     console.log('Searching with URL:', url)
     
-    const response = await fetch(url)
+    // Try direct fetch first
+    let response
+    try {
+      response = await fetch(url)
+    } catch (corsError) {
+      console.log('Direct fetch failed, trying CORS proxy:', corsError)
+      const proxyUrl = `${CORS_PROXY}${encodeURIComponent(url)}`
+      console.log('Using proxy URL:', proxyUrl)
+      response = await fetch(proxyUrl)
+    }
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
