@@ -10,7 +10,7 @@ function App() {
   const [error, setError] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchType, setSearchType] = useState('title')
-  const [sortBy, setSortBy] = useState('relevance')
+  const [sortBy, setSortBy] = useState('title')
   const [hasSearched, setHasSearched] = useState(false)
 
   const handleSearch = async (e) => {
