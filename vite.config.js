@@ -11,7 +11,8 @@ export default defineConfig({
       'localhost',
       '127.0.0.1',
       '.csb.app',
-      'fsndrh-3000.csb.app'
+      'fsndrh-3000.csb.app',
+      'fsndrh-3001.csb.app'
     ]
   }
 })
